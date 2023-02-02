@@ -1,11 +1,16 @@
 package app
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"main/middleware"
+
+	"github.com/gofiber/fiber/v2"
+)
 
 func ApplyRoutes(r fiber.Router) {
-	//apis := r.Group("app")
+	apis := r.Group("app", middleware.CheckStore())
 	{
 		// 	# 앱에서 타 앱에서 발행하는 이벤트를 구독하기 위한 리스너 API (앱 개발자가 URL Path 정의)
+		apis.Post("/test", CreateOrderForTest) // -> 해당 api에 이벤트를 등록 (임시 트리거)
 	}
 }
 
@@ -34,5 +39,5 @@ func ApplyRoutes(r fiber.Router) {
 // 	apis.Get("/order", GetOrderByOrderId)
 // 	apis.Delete("/order", OrderId)
 // 	apis.Get("/alram", RemindShoppingDayByUserId)
-// 	apis.Post("/test", CreateOrderForTest) // -> 해당 api에 이벤트를 등록 (임시)
+
 // }

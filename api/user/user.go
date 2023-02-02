@@ -11,6 +11,7 @@ func ApplyRoutes(r fiber.Router) {
 	{
 		apis.Post("", CreateUser)
 		apis.Get("/:userName", GetUser)
+		//TODO  아래 api 추가
 		//apis.Put("", UpdateUser)
 		//apis.Delete("", DeleteUser)
 	}
